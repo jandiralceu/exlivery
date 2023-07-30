@@ -24,5 +24,11 @@ defmodule Exlivery.Orders.OrderTest do
       assert response == expected_response
     end
 
+    test "should return error when there isn't items on the list" do
+      user = build(:user)
+      response = Order.build(user, [])
+
+      expected_response = {:error, ""}
+    end
   end
 end
