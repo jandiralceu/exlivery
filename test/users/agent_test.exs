@@ -38,7 +38,7 @@ defmodule Exlivery.Users.AgentTest do
       |> build()
       |> UserAgent.save()
 
-      response = UserAgent.get(~c"000000000000")
+      response = UserAgent.get("000000000000")
 
       assert response == {:error, "user not found"}
     end
