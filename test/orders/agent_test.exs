@@ -29,30 +29,7 @@ defmodule Exlivery.Orders.AgentTest do
 
       response = OrdersAgent.get(uuid)
 
-      expected_response = {
-        :ok,
-        %Order{
-          user_cpf: "11122233345",
-          delivery_address: "Elixir Boulevard 12",
-          items: [
-            %Item{
-              description: "The best pizza in Italy",
-              category: :pizza,
-              unit_price: Decimal.new("35.50"),
-              quantity: 2
-            },
-            %Item{
-              description: "Artesanal hamburger",
-              category: :hamburger,
-              unit_price: Decimal.new("39.99"),
-              quantity: 6
-            }
-          ],
-          total_price: Decimal.new("310.94")
-        }
-      }
-
-      assert response == expected_response
+      assert response == {:ok, order}
     end
 
     test "should returns an error if not find a order with current uuid" do
