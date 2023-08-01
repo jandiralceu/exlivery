@@ -24,10 +24,8 @@ defmodule Exlivery.Orders.AgentTest do
     end
 
     test "should returns an order if current uuid exists" do
-      {:ok, uuid} =
-        :order
-        |> build()
-        |> OrdersAgent.save()
+      order = build(:order)
+      {:ok, uuid} = OrdersAgent.save(order)
 
       response = OrdersAgent.get(uuid)
 
