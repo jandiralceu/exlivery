@@ -1,13 +1,14 @@
 defmodule Exlivery.Orders.OrderTest do
   use ExUnit.Case
 
-  alias Exlivery.Orders.{Item, Order}
-
   import Exlivery.Factory
+
+  alias Exlivery.Orders.Order
 
   describe "build/2" do
     test "should return an order when all params are valid" do
       user = build(:user)
+
       items = [
         build(:item),
         build(:item,
@@ -15,7 +16,7 @@ defmodule Exlivery.Orders.OrderTest do
           category: :hamburger,
           quantity: 6,
           unit_price: Decimal.new("39.99")
-        ),
+        )
       ]
 
       response = Order.build(user, items)

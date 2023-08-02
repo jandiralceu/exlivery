@@ -1,4 +1,5 @@
 defmodule Exlivery.Orders.Order do
+  @moduledoc "implements Order functions"
   alias Exlivery.Orders.Item
   alias Exlivery.Users.User
 
@@ -6,6 +7,7 @@ defmodule Exlivery.Orders.Order do
   @enforce_keys @keys
   defstruct @keys
 
+  @doc "Create an Order"
   def build(%User{cpf: cpf, address: address}, [%Item{} | _items] = items) do
     {
       :ok,

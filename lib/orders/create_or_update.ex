@@ -1,9 +1,11 @@
 defmodule Exlivery.Orders.CreateOrUpdate do
+  @moduledoc "implements create and update functions for Orders"
   alias Exlivery.Orders.Agent, as: OrderAgent
   alias Exlivery.Orders.Item
   alias Exlivery.Orders.Order
   alias Exlivery.Users.Agent, as: UserAgent
 
+  @doc "Create or Update an Order"
   def call(%{user_cpf: user_cpf, items: items}) do
     with {:ok, user} <- UserAgent.get(user_cpf),
          {:ok, items} <- build_items(items),
